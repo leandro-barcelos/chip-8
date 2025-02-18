@@ -5,6 +5,8 @@ pub struct Chip8 {
     index_register: u16,
     memory: [u8; 0x1000],
     stack: Vec<u16>,
+    delay_timer: u8,
+    sound_timer: u8,
 }
 
 impl Chip8 {
@@ -18,6 +20,18 @@ impl Chip8 {
             index_register: 0,
             memory,
             stack: Vec::new(),
+            delay_timer: 0,
+            sound_timer: 0,
+        }
+    }
+
+    pub fn update(&mut self) {
+        if self.delay_timer > 0 {
+            self.delay_timer -= 1;
+        }
+
+        if self.sound_timer > 0 {
+            self.sound_timer -= 1;
         }
     }
 

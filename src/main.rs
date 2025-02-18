@@ -8,7 +8,7 @@ mod display;
 mod font;
 
 fn main() -> Result<(), io::Error> {
-    let chip8 = Chip8::new();
+    let mut chip8 = Chip8::new();
 
     let mut display = Display::new();
     let frame_duration = Duration::from_secs_f64(1.0 / 60.0);
@@ -19,6 +19,8 @@ fn main() -> Result<(), io::Error> {
         if !display.event_poll() {
             break;
         }
+
+        chip8.update();
 
         display.render().unwrap();
 
