@@ -3,7 +3,9 @@ use display::Display;
 use std::io;
 use std::time::{Duration, Instant};
 
+mod audio;
 mod chip8;
+mod consts;
 mod display;
 mod font;
 
